@@ -122,7 +122,9 @@ var SampleApp = function() {
         for (var r in self.routes) {
             self.app.get(r, self.routes[r]);
         }
+
         self.app.use(express.static(path.join(__dirname, 'static')));
+        self.app.use(express.favicon(path.join(__dirname, "static/assets/images/ico/favicon.ico")));
     };
 
     /**
