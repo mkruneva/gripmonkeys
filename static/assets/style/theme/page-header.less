@@ -17,12 +17,12 @@
       // Fix for IE7's bad z-indexing so dropdowns don't appear below content that follows the navbar
       *position: relative;
       *z-index: 2000;
-    
+
     .brand {
         padding: 7px 100px 8px 0px;
         text-align: left;
     }
-    
+
     #main-menu {
         display: inline-block;
         float: none;
@@ -33,7 +33,7 @@
         line-height: 18px;
         font-size: 12px;
         list-style: none;
-        
+
         li {
             display: inline-block;
             position: relative;
@@ -56,6 +56,15 @@
             text-shadow: 0 1px 0 #ffffff;
             position: relative;
             display: block;
+        }
+        #buy-now {
+            padding: 4px 6px;
+            line-height: 19px; // ensure proper line-height if floated
+            color: @white;
+            white-space: nowrap;
+            text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+            background-color: #d9534f;
+            border-radius: .25em;
         }
         li a:focus,
         li a:hover {
