@@ -235,7 +235,9 @@
 .portfolio-item-details .submenu span:hover {
   text-decoration: none;
 }
-/**   PAGE | FEATURES*/
+/*
+*   PAGE | FEATURES
+*/
 .page-features {
   position: relative;
 }
@@ -671,6 +673,15 @@
   text-shadow: 0 1px 0 #ffffff;
   position: relative;
   display: block;
+}
+#navigation #main-menu #buy-now {
+  padding: 4px 6px;
+  line-height: 19px;
+  color: #ffffff;
+  white-space: nowrap;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #d9534f;
+  border-radius: .25em;
 }
 #navigation #main-menu li a:focus,
 #navigation #main-menu li a:hover {
