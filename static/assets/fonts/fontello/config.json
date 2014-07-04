@@ -7,6 +7,12 @@
   "ascent": 850,
   "glyphs": [
     {
+      "uid": "078fec38562c3f83a1201a908040c141",
+      "css": "emo-sunglasses",
+      "code": 59394,
+      "src": "fontelico"
+    },
+    {
       "uid": "31972e4e9d080eaa796290349ae6c1fd",
       "css": "users",
       "code": 59411,
@@ -28,12 +34,6 @@
       "uid": "08db5357646aae59e018ba87f2d466cd",
       "css": "th-large-outline",
       "code": 59404,
-      "src": "typicons"
-    },
-    {
-      "uid": "6364d85e960f23b9a843a506387e7970",
-      "css": "info-outline",
-      "code": 59407,
       "src": "typicons"
     },
     {

@@ -1,17 +1,17 @@
 {
-  "name": "OpenShift-Sample-App",
+  "name": "GripMonkeys web site",
   "version": "1.0.0",
-  "description": "OpenShift Sample Application",
+  "description": "GripMonkeys web site",
   "keywords": [
-    "OpenShift",
-    "Node.js",
-    "application",
-    "openshift"
+    "Climbing",
+    "Fingerboard",
+    "Wood",
+    "Holds"
   ],
   "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
+    "name": "Luchesar Cekov",
+    "email": "Luchesar.Cekov@gmail.com",
+    "url": "http://www.gripmonkeys.co.uk/"
   },
   "homepage": "http://www.openshift.com/",
   "repository": {
