@@ -2,6 +2,8 @@
 .icon-home-outline:before { content: '\e800'; } /* '' */
 .icon-house:before { content: '\e801'; } /* '' */
 .icon-emo-sunglasses:before { content: '\e802'; } /* '' */
+.icon-paypal:before { content: '\e803'; } /* '' */
+.icon-bitcoin:before { content: '\e804'; } /* '' */
 .icon-gauge:before { content: '\e806'; } /* '' */
 .icon-th-large-outline:before { content: '\e80c'; } /* '' */
 .icon-users:before { content: '\e813'; } /* '' */
