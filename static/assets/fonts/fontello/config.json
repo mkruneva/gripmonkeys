@@ -31,6 +31,12 @@
       "src": "entypo"
     },
     {
+      "uid": "8d584f31a5d54de313f1f3da28708ec0",
+      "css": "paypal",
+      "code": 59395,
+      "src": "entypo"
+    },
+    {
       "uid": "08db5357646aae59e018ba87f2d466cd",
       "css": "th-large-outline",
       "code": 59404,
@@ -59,6 +65,12 @@
       "css": "basket-1",
       "code": 59418,
       "src": "modernpics"
+    },
+    {
+      "uid": "523e56b66e166a5bb7b823844bdf56e6",
+      "css": "bitcoin",
+      "code": 59396,
+      "src": "zocial"
     },
     {
       "uid": "599d6c088f4a1c64611b989459d65f6b",

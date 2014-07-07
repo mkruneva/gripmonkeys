@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'fontello';
-  src: url('../font/fontello.eot?56120188');
-  src: url('../font/fontello.eot?56120188#iefix') format('embedded-opentype'),
-       url('../font/fontello.woff?56120188') format('woff'),
-       url('../font/fontello.ttf?56120188') format('truetype'),
-       url('../font/fontello.svg?56120188#fontello') format('svg');
+  src: url('../font/fontello.eot?93466767');
+  src: url('../font/fontello.eot?93466767#iefix') format('embedded-opentype'),
+       url('../font/fontello.woff?93466767') format('woff'),
+       url('../font/fontello.ttf?93466767') format('truetype'),
+       url('../font/fontello.svg?93466767#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,7 +14,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?56120188#fontello') format('svg');
+    src: url('../font/fontello.svg?93466767#fontello') format('svg');
   }
 }
 */
@@ -53,6 +53,8 @@
 .icon-home-outline:before { content: '\e800'; } /* '' */
 .icon-house:before { content: '\e801'; } /* '' */
 .icon-emo-sunglasses:before { content: '\e802'; } /* '' */
+.icon-paypal:before { content: '\e803'; } /* '' */
+.icon-bitcoin:before { content: '\e804'; } /* '' */
 .icon-gauge:before { content: '\e806'; } /* '' */
 .icon-th-large-outline:before { content: '\e80c'; } /* '' */
 .icon-users:before { content: '\e813'; } /* '' */
