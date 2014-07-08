@@ -313,13 +313,8 @@
                         <script src="https://coinbase.com/assets/button.js" type="text/javascript"></script>
                     </div>
                 </div> 
-                <p>&nbsp;</p>
-                <div class="row">
-                    <div class="span8 offset2">
-                        <p>Delivery worldwide is an option. For details and prices please enquery via a channel from the contacts. </p>
-                    </div>
-                </div>
             </header>
+            <p>Delivery worldwide is an option - please enquery via a channel from the contacts. </p>
         </div>
     </div>
     <!-- END PAGE | BUY NOW -->
