@@ -5,7 +5,7 @@ $(document).ready(function(){
     var pageHeight = $(window).height();
     var pageWidth = $(window).width();
     var navigationHeight = $("#navigation").outerHeight();
-    
+
     /**
     *   ON RESIZE, check again
     */
@@ -13,30 +13,30 @@ $(document).ready(function(){
         pageWidth = $(window).width();
         pageHeight = $(window).height();
     });
-    
-    
+
+
     /**
     *   ON LOAD
     */
 
     /* Initialize scroll so if user droped to other part of page then home page. */
     $(window).trigger('scroll');
-    
+
     /* Fix navigation. */
     $('#navigation').fixedonlater({
         speedDown: 250,
         speedUp: 100
     });
-    
+
     /* Centralize elements on page. */
     $('.centralized').centralized({
         delay: 1500,
         fadeSpeed: 500
     });
-    
+
     /* Make embeded videos responsive. */
     $.fn.responsivevideos();
-    
+
     /* Carousel "Quote slider" initialization. */
     $('#quote-slider').each(function(){
         if($('.item', this).length) {
@@ -45,7 +45,7 @@ $(document).ready(function(){
             });
         }
     });
-    
+
     /* Scroll spy and scroll filter */
     $('#main-menu').onePageNav({
         currentClass: "active",
@@ -56,8 +56,8 @@ $(document).ready(function(){
         filter: "",
         easing: "swing"
      });
-    
-    /* 
+
+    /*
     *  Paralax initialization.
     *  Exclude for mobile.
     */
@@ -67,21 +67,21 @@ $(document).ready(function(){
         $('#page-features').parallax("0%", 0.07);
         $('#page-twitter').parallax("0%", 0.1);
     }
-    
+
     /* Emulate touch on table/mobile touchstart. */
     if(typeof(window.ontouchstart) != 'undefined') {
         var touchElements = [".social-icons a", ".portfolio-items li", ".about-items .item"];
-        
+
         $.each(touchElements, function (i, val) {
             $(val).each(function(i, obj) {
                 $(obj).bind('click', function(e){
-                
+
                     if($(this).hasClass('clickInNext')){
                         $(this).removeClass('clickInNext');
                     } else {
                         e.preventDefault();
                         e.stopPropagation();
-                        
+
                         $(this).mouseover();
                         $(this).addClass('clickInNext');
                     }
@@ -101,17 +101,17 @@ $(document).ready(function(){
         $('html, body').animate({
             scrollTop: $( $.attr(this, 'href') ).offset().top - navigationHeight + 4
         }, 800);
-        
+
         /* Fix jumping of navigation. */
         setTimeout(function() {
             $(window).trigger('scroll');
         }, 900);
-        
+
         return false;
     });
-    
+
     /**
-    *   PAGE | Welcome 
+    *   PAGE | Welcome
     *
     *   Initialize slider for welcome page H1 message.
     */
@@ -126,7 +126,7 @@ $(document).ready(function(){
         useCSS: false,
         pause: 10000
     });
-    
+
     /**
     *   PAGE | WORK
     *
@@ -164,9 +164,9 @@ $(document).ready(function(){
         onMixStart: null,
         onMixEnd: null
     });
-    
+
     /**
-    *   PAGE | Twitter 
+    *   PAGE | Twitter
     *
     *   Pull latest tweets from user.
     *   Configuration: /plugins/twitter/index.php
@@ -176,11 +176,34 @@ $(document).ready(function(){
         username: 'TheGridelicious',
         count: 3
     });
-    
+
     $('#twitterfeed-slider').tweetCarousel({
         interval: 7000,
         pause: "hover"
     });
+
+    /**
+    *  Init translations
+    */
+    function initTranslationsWithLang (lang) {
+      jQuery.i18n.properties({
+          name:'Messages',
+          path:'assets/js/translations/',
+          mode:'both',
+          language: lang,
+          checkAvailableLanguages: true,
+          async: true,
+          callback: function() {
+              $('title').text(jQuery.i18n.prop('msg_hello'));
+              $('#msg_enter').text(jQuery.i18n.prop('msg_enter'));
+          }
+      });
+    }
+    initTranslationsWithLang('en_GB');
+    $('#lang').change(function () {
+      initTranslationsWithLang($(this).val());
+    });
+
 });
 
 
@@ -208,15 +231,14 @@ $( document ).ajaxComplete(function() {
     $(".loading").delay(1000).slideUp(500, function(){
         $(this).remove();
     });
-    
+
     /* Portfolio details - close. */
     $(".close-portfolio span").click(function(e) {
         $(".portfolio-item-details").delay(500).slideUp(500, function(){
             $(this).remove();
         });
-        
+
         window.location.hash= "!";
         return false;
     });
 });
-
