@@ -1,23 +1,23 @@
-$(document).ready(function(){
+$(document).ready(function() {
     /**
-    *   Global variables.
-    */
+     *   Global variables.
+     */
     var pageHeight = $(window).height();
     var pageWidth = $(window).width();
     var navigationHeight = $("#navigation").outerHeight();
 
     /**
-    *   ON RESIZE, check again
-    */
-    $(window).resize(function () {
+     *   ON RESIZE, check again
+     */
+    $(window).resize(function() {
         pageWidth = $(window).width();
         pageHeight = $(window).height();
     });
 
 
     /**
-    *   ON LOAD
-    */
+     *   ON LOAD
+     */
 
     /* Initialize scroll so if user droped to other part of page then home page. */
     $(window).trigger('scroll');
@@ -38,8 +38,8 @@ $(document).ready(function(){
     $.fn.responsivevideos();
 
     /* Carousel "Quote slider" initialization. */
-    $('#quote-slider').each(function(){
-        if($('.item', this).length) {
+    $('#quote-slider').each(function() {
+        if ($('.item', this).length) {
             $(this).carousel({
                 interval: 20000
             });
@@ -55,13 +55,13 @@ $(document).ready(function(){
         scrollSpeed: 750,
         filter: "",
         easing: "swing"
-     });
+    });
 
     /*
-    *  Paralax initialization.
-    *  Exclude for mobile.
-    */
-    if(pageWidth > 980){
+     *  Paralax initialization.
+     *  Exclude for mobile.
+     */
+    if (pageWidth > 980) {
         /* Dont user paralax for tablet and mobile devices. */
         $('#page-welcome').parallax("0%", 0.2);
         $('#page-features').parallax("0%", 0.07);
@@ -69,14 +69,14 @@ $(document).ready(function(){
     }
 
     /* Emulate touch on table/mobile touchstart. */
-    if(typeof(window.ontouchstart) != 'undefined') {
+    if (typeof(window.ontouchstart) != 'undefined') {
         var touchElements = [".social-icons a", ".portfolio-items li", ".about-items .item"];
 
-        $.each(touchElements, function (i, val) {
+        $.each(touchElements, function(i, val) {
             $(val).each(function(i, obj) {
-                $(obj).bind('click', function(e){
+                $(obj).bind('click', function(e) {
 
-                    if($(this).hasClass('clickInNext')){
+                    if ($(this).hasClass('clickInNext')) {
                         $(this).removeClass('clickInNext');
                     } else {
                         e.preventDefault();
@@ -91,15 +91,15 @@ $(document).ready(function(){
     }
 
     /**
-    *   BLOCK | Navigation
-    *
-    *   Smooth scroll
-    *   Main menu links
-    *   Logo click on Welcome page
-    */
-    $('#page-welcome .logo a').click(function(){
+     *   BLOCK | Navigation
+     *
+     *   Smooth scroll
+     *   Main menu links
+     *   Logo click on Welcome page
+     */
+    $('#page-welcome .logo a').click(function() {
         $('html, body').animate({
-            scrollTop: $( $.attr(this, 'href') ).offset().top - navigationHeight + 4
+            scrollTop: $($.attr(this, 'href')).offset().top - navigationHeight + 4
         }, 800);
 
         /* Fix jumping of navigation. */
@@ -111,11 +111,11 @@ $(document).ready(function(){
     });
 
     /**
-    *   PAGE | Welcome
-    *
-    *   Initialize slider for welcome page H1 message.
-    */
-   $('#welcome-messages ul').bxSlider({
+     *   PAGE | Welcome
+     *
+     *   Initialize slider for welcome page H1 message.
+     */
+    $('#welcome-messages ul').bxSlider({
         mode: 'vertical',
         auto: true,
         minSlides: 1,
@@ -128,12 +128,12 @@ $(document).ready(function(){
     });
 
     /**
-    *   PAGE | WORK
-    *
-    *   .plugin-filter - Defines action links.
-    *   .plugin-filter-elements - Defines items with li.
-    */
-    $('.plugin-filter').click(function(){
+     *   PAGE | WORK
+     *
+     *   .plugin-filter - Defines action links.
+     *   .plugin-filter-elements - Defines items with li.
+     */
+    $('.plugin-filter').click(function() {
         return false;
     });
     $('.plugin-filter-elements').mixitup({
@@ -141,7 +141,7 @@ $(document).ready(function(){
         filterSelector: '.plugin-filter',
         sortSelector: '.sort',
         buttonEvent: 'click',
-        effects: ['fade','rotateY'],
+        effects: ['fade', 'rotateY'],
         listEffects: null,
         easing: 'smooth',
         layoutMode: 'grid',
@@ -166,11 +166,11 @@ $(document).ready(function(){
     });
 
     /**
-    *   PAGE | Twitter
-    *
-    *   Pull latest tweets from user.
-    *   Configuration: /plugins/twitter/index.php
-    */
+     *   PAGE | Twitter
+     *
+     *   Pull latest tweets from user.
+     *   Configuration: /plugins/twitter/index.php
+     */
     $('#twitterfeed-slider').tweet({
         modpath: 'plugins/twitter/',
         username: 'TheGridelicious',
@@ -183,38 +183,38 @@ $(document).ready(function(){
     });
 
     /**
-    *  Init translations
-    */
-    function initTranslationsWithLang (lang) {
-      jQuery.i18n.properties({
-          name:'Messages',
-          path:'assets/js/translations/',
-          mode:'both',
-          language: lang,
-          checkAvailableLanguages: true,
-          async: true,
-          callback: function() {
-              $('title').text(jQuery.i18n.prop('msg_title'));
-              $('#msg_enter').text(jQuery.i18n.prop('msg_enter'));
-          }
-      });
+     *  Init translations
+     */
+    function initTranslationsWithLang(lang) {
+        jQuery.i18n.properties({
+            name: 'Messages',
+            path: 'assets/js/translations/',
+            mode: 'both',
+            language: lang,
+            checkAvailableLanguages: true,
+            async: true,
+            callback: function() {
+                $('title').text(jQuery.i18n.prop('msg_title'));
+                $('#msg_enter').text(jQuery.i18n.prop('msg_enter'));
+            }
+        });
     }
     initTranslationsWithLang('en_GB');
-    $('#lang').change(function () {
-      initTranslationsWithLang($(this).val());
+    $('#lang').change(function() {
+        initTranslationsWithLang($(this).val());
     });
 
 });
 
 
 /**
-*   Ajax request.
-*   Start loading.
-*   Append loading notification.
-*/
-$( document ).ajaxSend( function() {
+ *   Ajax request.
+ *   Start loading.
+ *   Append loading notification.
+ */
+$(document).ajaxSend(function() {
     /* Show loader. */
-    if($(".loading").length == 0) {
+    if ($(".loading").length == 0) {
         $("body").append('<div class="loading"><div class="progress progress-striped active"><div class="bar"></div></div></div>');
         $(".loading").slideDown();
         $(".loading .progress .bar").delay(300).css("width", "100%");
@@ -222,23 +222,23 @@ $( document ).ajaxSend( function() {
 });
 
 /**
-*   Reinitialize Scrollspy after ajax request is completed.
-*   Refreshing will recalculate positions of each page in document.
-*   Time delay is added to allow ajax loaded content to expand and change height of page.
-*/
-$( document ).ajaxComplete(function() {
+ *   Reinitialize Scrollspy after ajax request is completed.
+ *   Refreshing will recalculate positions of each page in document.
+ *   Time delay is added to allow ajax loaded content to expand and change height of page.
+ */
+$(document).ajaxComplete(function() {
     /* Remove loading section. */
-    $(".loading").delay(1000).slideUp(500, function(){
+    $(".loading").delay(1000).slideUp(500, function() {
         $(this).remove();
     });
 
     /* Portfolio details - close. */
     $(".close-portfolio span").click(function(e) {
-        $(".portfolio-item-details").delay(500).slideUp(500, function(){
+        $(".portfolio-item-details").delay(500).slideUp(500, function() {
             $(this).remove();
         });
 
-        window.location.hash= "!";
+        window.location.hash = "!";
         return false;
     });
 });
