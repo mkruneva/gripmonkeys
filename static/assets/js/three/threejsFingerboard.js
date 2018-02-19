@@ -29,12 +29,21 @@ function fingerboard3D() {
 
     $('#ann').hide();
     $('.showOrNot').on('click', hideShow);
+    $('.show2d3d').on('click', show2d3d);
 
     function hideShow() {
         let text = $('.showOrNot').text();
         $('.showOrNot').text(text == 'Show Annotaions' ? 'Hide Annotaions' : 'Show Annotaions');
         $('#ann').toggle();
         linesGroup.visible = linesGroup.visible ? false : true;
+    }
+
+    function show2d3d() {
+        // console.log('click');
+        let text2 = $('.show2d3d').text();
+        $('.showOrNot').text(text2 == 'Show image' ? 'Show 3D' : 'Show image');
+        $('#canvasContainer>img').toggle();
+        fbGroup.visible = fbGroup.visible ? false : true;
     }
 
     animate();
@@ -47,7 +56,7 @@ function fingerboard3D() {
         camera.position.set(0, 0, 620);
 
         //RENDER
-        renderer = createRenderer(0x222222, 0.5);
+        renderer = createRenderer(0x222222, 0.1);
         const parent = document.getElementById('canvasContainer');
         parent.appendChild(renderer.domElement);
 
@@ -247,6 +256,7 @@ function fingerboard3D() {
             $('#loader').hide();
             $('#canvasContainer>img').hide(300);
             $('#ann').show();
+            $('canvas').css('cursor', 'crosshair');
             fbGroup.visible = true;
         };
     }

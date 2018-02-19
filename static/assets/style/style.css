@@ -53,9 +53,8 @@ div#ann {
     margin: 3px;
 }
 
-.showOrNot {
+.buttons>div {
     position: absolute;
-    left: 2%;
     bottom: 4%;
     z-index: 3;
     color: rgba(230, 230, 230, 0.84);
@@ -65,6 +64,14 @@ div#ann {
     font-family: "Comic Sans MS", cursive, sans-serif;
     font-size: 100%;
     cursor: pointer;
+}
+
+.showOrNot {
+    left: 2%;
+}
+
+.show2d3d {
+    left: 26%;
 }
 
 
