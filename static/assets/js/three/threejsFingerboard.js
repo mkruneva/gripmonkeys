@@ -240,12 +240,11 @@ function fingerboard3D() {
     }
 
     function loadingScreen(fbGroup) {
-        const loaderDiv = document.getElementById('loader');
         THREE.DefaultLoadingManager.onStart = function() {
-            loaderDiv.style.display = 'block';
+            $('#loader').show();
         };
         THREE.DefaultLoadingManager.onLoad = function() {
-            loaderDiv.style.display = 'none';
+            $('#loader').hide();
             $('#canvasContainer>img').hide(300);
             $('#ann').show();
             fbGroup.visible = true;
