@@ -113,3 +113,10 @@ div#ann {
         -webkit-transform: rotate(360deg);
     }
 }
+
+
+/* Override theme style */
+
+.page-welcome {
+    height: 120%;
+}
