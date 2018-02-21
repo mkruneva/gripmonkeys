@@ -102,7 +102,7 @@ function fingerboard3D() {
         createLights();
 
         //LOAD FINGERBOARD
-        let fingerb = loadObject(baseURL + '/obj/fingerboard-obj.obj', fingerboardMat, fbGroup);
+        let fingerb = loadObject(baseURL + '/obj/fingerboard-2obj.obj', fingerboardMat, fbGroup);
         // console.log('fingerb is ', fingerb); // fingerb is undefined ?
 
         //Controls
