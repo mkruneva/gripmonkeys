@@ -102,7 +102,7 @@ function fingerboard3D() {
         createLights();
 
         //LOAD FINGERBOARD
-        let fingerb = loadObject(baseURL + '/obj/fingerboard.obj', fingerboardMat, fbGroup);
+        let fingerb = loadObject(baseURL + '/obj/fingerboard2.obj', fingerboardMat, fbGroup);
         // console.log('fingerb is ', fingerb); // fingerb is undefined ?
 
         //Controls
@@ -128,15 +128,16 @@ function fingerboard3D() {
 
     function loadTextures() {
         var maps = {
-            diffTex: new THREE.TextureLoader().load(baseURL + '/tex/beech_wood_albedo.jpg'),
-            aoTex: new THREE.TextureLoader().load(baseURL + '/tex/beech_wood_ao.png'),
-            nrmTex: new THREE.TextureLoader().load(baseURL + '/tex/beech_wood_anormal.png'),
-            roughtTex: new THREE.TextureLoader().load(baseURL + '/tex/beech_wood_rough.png'),
-            backgroundTex: new THREE.TextureLoader().load(baseURL + '/tex/background.jpg'),
+            diffTex: new THREE.TextureLoader().load(baseURL + '/tex/WornWood1_1024_albedo2.png'),
+            aoTex: new THREE.TextureLoader().load(baseURL + '/tex/WornWood1_1024_ao.png'),
+            nrmTex: new THREE.TextureLoader().load(baseURL + '/tex/WornWood1_1024_normal.png'),
+            roughtTex: new THREE.TextureLoader().load(baseURL + '/tex/WornWood1_1024_roughness.png'),
+            //  backgroundTex: new THREE.TextureLoader().load(baseURL + '/tex/background.jpg'),
         }
-        repeatTex(maps.diffTex, 3);
-        repeatTex(maps.nrmTex, 3);
-        repeatTex(maps.backgroundTex, 3);
+        repeatTex(maps.diffTex, 2);
+        repeatTex(maps.aoTex, 2);
+        repeatTex(maps.nrmTex, 2);
+        repeatTex(maps.roughtTex, 2);
         maps.envCubeMap = new THREE.CubeTextureLoader()
             .setPath(baseURL + '/tex/cubemap/')
             .load([
@@ -154,22 +155,15 @@ function fingerboard3D() {
         var textureContainer = loadTextures();
         var material = new THREE.MeshStandardMaterial({
             aoMap: textureContainer.aoTex,
-            color: 0xe0d4c2,
+            color: 0xe5d3cc,
             envMap: textureContainer.envCubeMap,
             map: textureContainer.diffTex,
             normalMap: textureContainer.nrmTex,
-            normalScale: new THREE.Vector3(0.3, 0.3),
+            normalScale: new THREE.Vector3(0.2, 0.2),
             metalness: 0,
-            roughness: 1
+            roughness: 1,
+            // roughnessMap: textureContainer.roughtTex
         });
-
-
-        return material;
-    }
-
-    function createBackgroundMaterial() {
-        var textureContainer = loadTextures();
-        var material = new THREE.MeshBasicMaterial({ color: 0xAAAAAA, map: textureContainer.backgroundTex });
 
         return material;
     }
