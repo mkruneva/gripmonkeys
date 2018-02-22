@@ -115,11 +115,8 @@ div.buttons {
 
 /* Override theme style */
 
-.page-welcome {
-    height: 120%;
-}
-
 .row-fluid.row-canvas {
     width: 110%;
     margin-left: -5%;
+    margin-top: -8%;
 }
