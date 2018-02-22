@@ -22,6 +22,10 @@ $(document).ready(function() {
     /* Initialize scroll so if user droped to other part of page then home page. */
     $(window).trigger('scroll');
 
+    /* Hide Annotations Button */
+    $('.showOrNot').hide();
+    $('.show2d3d').hide();
+
     /* Fix navigation. */
     $('#navigation').fixedonlater({
         speedDown: 250,

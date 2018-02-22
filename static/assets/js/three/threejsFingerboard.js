@@ -39,10 +39,11 @@ function fingerboard3D() {
     }
 
     function show2d3d() {
-        // console.log('click');
         let text2 = $('.show2d3d').text();
         $('.show2d3d').text(text2 == 'Show image' ? 'Show 3D' : 'Show image');
         $('#canvasContainer>img').toggle();
+        $('.showOrNot').toggle();
+        $('#ann').toggle();
         fbGroup.visible = fbGroup.visible ? false : true;
     }
 
@@ -247,9 +248,11 @@ function fingerboard3D() {
             $('#loader').show();
         };
         THREE.DefaultLoadingManager.onLoad = function() {
+            $('.showOrNot').show();
+            $('.show2d3d').show();
+            $('#ann').show();
             $('#loader').hide();
             $('#canvasContainer>img').hide(300);
-            $('#ann').show();
             $('canvas').css('cursor', 'crosshair');
             fbGroup.visible = true;
         };
