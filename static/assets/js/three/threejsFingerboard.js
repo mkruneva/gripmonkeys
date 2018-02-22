@@ -20,6 +20,8 @@ function fingerboard3D() {
         ann: []
     };
 
+    const fbYpos = -110;
+
     const selectors = ['.sloper30', '.sloper20', '.jugL', '.jugC',
         '.fingPock2', '.fingPock3', '.fingPock4',
         '.fingCrimp4', '.fingCrimp3', '.fingCrimp2'
@@ -52,9 +54,9 @@ function fingerboard3D() {
 
     function init() {
         scene = new THREE.Scene();
-        camera = new THREE.PerspectiveCamera(35, 10 / 5, 1, 2000); //5/3 ratio corresponds to the 0.6 width/height canvas container padding
+        camera = new THREE.PerspectiveCamera(35, 5 / 3, 1, 2000); //5/3 ratio corresponds to the 0.6 width/height canvas container padding
         scene.add(camera);
-        camera.position.set(0, 0, 620);
+        camera.position.set(0, 0, 1020);
 
         //RENDER
         renderer = createRenderer(0x222222, 0.1);
@@ -62,7 +64,7 @@ function fingerboard3D() {
         parent.appendChild(renderer.domElement);
 
         // Empty Group
-        fbGroup = createfbGroup(0, -75, 0);
+        fbGroup = createfbGroup(0, fbYpos, 0);
         meshDistance = camera.position.distanceTo(fbGroup.position);
 
         //
@@ -90,7 +92,7 @@ function fingerboard3D() {
                 const d2 = pos.lineFir[i][2] + difference[2];
 
                 pos.lineSec.push([d0, d1, d2]);
-                pos.ann.push([d0, d1 - 75, d2]);
+                pos.ann.push([d0, d1 + fbYpos, d2]);
 
                 lines[i] = createLine(pos.lineFir[i], pos.lineSec[i]);
             }

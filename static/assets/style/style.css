@@ -3,14 +3,14 @@
 #canvasContainer {
     position: relative;
     width: 100%;
-    padding-top: 50%;
+    padding-top: 60%;
 }
 
 #canvasContainer>img {
     position: absolute;
-    top: 30%;
-    left: 5%;
-    width: 90% !important;
+    top: 38%;
+    left: 6%;
+    width: 88% !important;
     z-index: 5;
 }
 
@@ -55,8 +55,9 @@ div#ann {
 
 div.buttons {
     position: absolute;
-    bottom: 4%;
+    bottom: 10%;
     z-index: 3;
+    left: 5%;
 }
 
 .buttons>div {
@@ -118,5 +119,12 @@ div.buttons {
 .row-fluid.row-canvas {
     width: 110%;
     margin-left: -5%;
-    margin-top: -8%;
+}
+
+.row-fluid.row-canvas>div {
+    margin-top: -16%;
+}
+
+.row-fluid.row-wellcome {
+    margin-top: 10%;
 }
