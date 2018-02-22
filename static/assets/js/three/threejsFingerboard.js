@@ -41,7 +41,7 @@ function fingerboard3D() {
     function show2d3d() {
         // console.log('click');
         let text2 = $('.show2d3d').text();
-        $('.showOrNot').text(text2 == 'Show image' ? 'Show 3D' : 'Show image');
+        $('.show2d3d').text(text2 == 'Show image' ? 'Show 3D' : 'Show image');
         $('#canvasContainer>img').toggle();
         fbGroup.visible = fbGroup.visible ? false : true;
     }
