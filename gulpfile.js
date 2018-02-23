@@ -5,7 +5,7 @@ var less = require('gulp-less');
 var browserSync = require('browser-sync').create();
 
 gulp.task('styles', function() {
-    gulp.src('./static/assets/style/style.less')
+    gulp.src('./client/static/assets/style/style.less')
         .pipe(less())
         .pipe(gulp.dest('./build/css'))
         .pipe(browserSync.reload({stream: true}));
