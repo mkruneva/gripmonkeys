@@ -28,6 +28,7 @@
   "devDependencies": {
     "browser-sync": "^2.23.6",
     "gulp": "^3.9.1",
+    "gulp-csso": "^3.0.1",
     "gulp-less": "^3.5.0"
   },
   "bundleDependencies": [],
