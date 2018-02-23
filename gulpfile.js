@@ -4,6 +4,8 @@ var gulp = require('gulp');
 var less = require('gulp-less');
 var minifyCSS = require('gulp-csso');
 var imagemin = require('gulp-imagemin');
+var uglify = require('gulp-uglify');
+// var pump = require('pump');
 var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
@@ -19,15 +21,17 @@ gulp.task('html', function() {
 gulp.task('imagemin', function() {
     gulp.src('client/static/assets/images/**/*')
         .pipe(imagemin())
-        .pipe(gulp.dest('build/images'));
+        .pipe(gulp.dest('build/assets/images'));
 });
 
 // min tex
 gulp.task('texmin', function() {
     gulp.src('client/static/assets/tex/**/*')
         .pipe(imagemin())
-        .pipe(gulp.dest('build/textures'));
+        .pipe(gulp.dest('build/assets/textures'));
 });
+
+// .pipe(imagemin({verbose: true}))
 
 gulp.task('mini', ['imagemin', 'texmin']);
 
@@ -36,18 +40,36 @@ gulp.task('css', function() {
     gulp.src('client/static/assets/style/main.less')
         .pipe(less())
         .pipe(minifyCSS())
-        .pipe(gulp.dest('build/css'))
+        .pipe(gulp.dest('build/assets/style'))
         // .pipe(browserSync.reload({ stream: true }));
 });
 
-// application.js 
-gulp.task('js', function() {
+// application.js uglify
+gulp.task('jsApp', function() {
     return gulp.src('client/static/assets/js/application/source/application.js')
-        .pipe(sourcemaps.init())
-        .pipe(concat('app.min.js'))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('build/js'));
+        .pipe(uglify())
+        .pipe(gulp.dest('build/assets/js'));
 });
+
+// three.js uglify
+gulp.task('uglyThree', function() {
+    return gulp.src(['client/static/assets/js/three/orbitCtrls.js',
+            'client/static/assets/js/three/Detector.js'
+        ])
+        .pipe(uglify())
+        .pipe(gulp.dest('build/assets/js/three'));
+});
+
+gulp.task('concatThree', function() {
+    return gulp.src('build/assets/js/three/*.js')
+        // .pipe(uglify())
+        // .pipe(sourcemaps.init())
+        .pipe(concat('three.min.js'))
+        // .pipe(sourcemaps.write())
+        .pipe(gulp.dest('build/assets/js/three'));
+});
+
+gulp.task('js', ['jsApp', 'uglyThree']);
 
 gulp.task('serve', function() {
     browserSync.init({
