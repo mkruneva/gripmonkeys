@@ -6,7 +6,7 @@ var minifyCSS = require('gulp-csso');
 var browserSync = require('browser-sync').create();
 
 gulp.task('styles', function() {
-    gulp.src('./client/static/assets/style/style.less')
+    gulp.src('./client/static/assets/style/main.less')
         .pipe(less())
         .pipe(minifyCSS())
         .pipe(gulp.dest('./build/css'))
