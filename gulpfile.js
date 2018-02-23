@@ -7,6 +7,14 @@ var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
 
+
+// copy html to build
+gulp.task('html', function() {
+    gulp.src('client/*.html')
+        .pipe(gulp.dest('build'));
+});
+
+// less to css, minify
 gulp.task('css', function() {
     gulp.src('client/static/assets/style/main.less')
         .pipe(less())
@@ -15,12 +23,13 @@ gulp.task('css', function() {
         // .pipe(browserSync.reload({ stream: true }));
 });
 
+// application.js 
 gulp.task('js', function() {
     return gulp.src('client/static/assets/js/application/source/application.js')
         .pipe(sourcemaps.init())
         .pipe(concat('app.min.js'))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('build/js'))
+        .pipe(gulp.dest('build/js'));
 });
 
 gulp.task('serve', function() {
@@ -34,4 +43,4 @@ gulp.task('serve', function() {
     gulp.watch('./**/*.html').on('change', browserSync.reload());
 });
 
-gulp.task('default', ['css', 'js']);
+gulp.task('default', ['html', 'css', 'js']);
