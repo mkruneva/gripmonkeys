@@ -1,6 +1,6 @@
 {
   "name": "gripmonkeys",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "GripMonkeys web site",
   "keywords": [
     "Climbing",
@@ -9,7 +9,7 @@
     "Holds"
   ],
   "author": {
-    "name": "Luchesar Cekov",
+    "name": "Luchesar Cekov, Marta Kruneva",
     "email": "Luchesar.Cekov@gmail.com",
     "url": "http://www.gripmonkeys.co.uk/"
   },
@@ -25,7 +25,11 @@
   "dependencies": {
     "express": "~3.4.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.5.0"
+  },
   "bundleDependencies": [],
   "private": true,
   "main": "server.js"

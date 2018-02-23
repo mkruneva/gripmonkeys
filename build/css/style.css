@@ -1,0 +1,137 @@
+/* canvas */
+#canvasContainer {
+  position: relative;
+  width: 100%;
+  padding-top: 60%;
+}
+#canvasContainer > img {
+  position: absolute;
+  top: 38%;
+  left: 6%;
+  width: 88% !important;
+  z-index: 5;
+}
+#canvasContainer > canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+/* Annotations */
+div#ann {
+  position: relative;
+}
+#ann > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  padding: 0.25em;
+  /* margin-left: 15px; */
+  margin-top: -30px;
+  color: #fff;
+  background: rgba(50, 50, 50, 0.7);
+  border-radius: .1em;
+  font-size: 15px;
+  line-height: 1.2;
+  transition: opacity .5s;
+  cursor: pointer;
+}
+#ann > div:hover {
+  background: rgba(50, 50, 50, 0.95);
+}
+#ann > div > p {
+  margin: 3px;
+}
+/* Annotation buttons */
+div.buttons {
+  position: absolute;
+  bottom: 12%;
+  z-index: 3;
+  right: 8%;
+}
+.buttons > div {
+  display: inline-block;
+  margin-right: 2px;
+  color: rgba(230, 230, 230, 0.94);
+  border: 2px solid rgba(230, 230, 230, 0.84);
+  background: rgba(50, 50, 50, 0.5);
+  padding: 0.3em 0.5em;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: 300;
+  cursor: pointer;
+  min-width: 165px;
+}
+/* Loader */
+#loader {
+  position: absolute;
+  left: 42%;
+  top: 27.5%;
+  z-index: 6;
+}
+#loader > .text {
+  float: right;
+  margin-left: 20px;
+  line-height: 45px;
+  font-weight: 200;
+  color: #fff;
+  text-align: center;
+  font-size: 120%;
+}
+#loader > .spinner {
+  float: left;
+  margin: 5px;
+  height: 28px;
+  width: 28px;
+  animation: rotate 1.2s infinite linear;
+  border: 2px solid rgba(230, 230, 230, 0.84);
+}
+#loader > .spinner > .spinner {
+  float: left;
+  margin: 2.5px;
+  height: 18px;
+  width: 18px;
+  animation: rotate 2.4s infinite linear;
+  border: 2px solid rgba(230, 230, 230, 0.84);
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* end loader */
+/* Override theme style */
+.row-fluid.row-canvas {
+  width: 110%;
+  margin-left: -5%;
+}
+.row-fluid.row-canvas > div {
+  margin-top: -16%;
+}
+.row-fluid.row-wellcome {
+  margin-top: 10%;
+}
+@media (max-width: 767px) {
+  .showOrNot,
+  #ann,
+  #loader > .text {
+    display: none !important;
+    visibility: hidden;
+  }
+  div.buttons {
+    bottom: 3%;
+    right: 50%;
+    margin-right: -82px;
+  }
+  .row-fluid.row-canvas {
+    width: 100%;
+    margin-left: inherit;
+  }
+}
