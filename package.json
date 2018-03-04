@@ -31,9 +31,13 @@
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^3.0.1",
     "gulp-imagemin": "^4.1.0",
+    "gulp-jasmine": "^3.0.0",
     "gulp-less": "^3.5.0",
     "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify": "^3.0.0"
+    "gulp-uglify": "^3.0.0",
+    "jasmine-core": "^3.1.0",
+    "karma": "^2.0.0",
+    "karma-jasmine": "^1.1.1"
   },
   "bundleDependencies": [],
   "private": true,

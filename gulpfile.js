@@ -10,6 +10,9 @@ var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
 
+var jasmine = require('gulp-jasmine');
+var cover = require('gulp-coverage');
+
 
 // copy html to build
 gulp.task('html', function() {
@@ -83,3 +86,26 @@ gulp.task('serve', function() {
 });
 
 gulp.task('default', ['html', 'mini', 'css', 'js']);
+
+
+// TESTS
+gulp.task('test', function() {
+    return gulp.src('client/static/assets/specs/**.js')
+        .pipe(jasmine());
+});
+
+gulp.task('test-watch', function() {
+    gulp.watch(['client/static/assets/specs/**.js', 'client/static/assets/js/**.js'], ['test']);
+});
+
+gulp.task('jasmine', function() {
+    return gulp.src('srcjasmine.js')
+        .pipe(cover.instrument({
+            pattern: ['**/test*'],
+            debugDirectory: 'debug'
+        }))
+        .pipe(jasmine())
+        .pipe(cover.gather())
+        .pipe(cover.format())
+        .pipe(gulp.dest('reports'));
+});
