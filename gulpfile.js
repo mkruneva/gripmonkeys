@@ -12,6 +12,7 @@ var browserSync = require('browser-sync').create();
 
 var jasmine = require('gulp-jasmine');
 var cover = require('gulp-coverage');
+var istanbul = require('gulp-istanbul');
 
 
 // copy html to build
@@ -100,14 +101,29 @@ gulp.task('test-watch', function() {
 
 gulp.task('test', ['test-single', 'test-watch']);
 
-gulp.task('cover', function() {
-    return gulp.src('./specs/**.js')
-        .pipe(cover.instrument({
-            pattern: ['**/test*'],
-            debugDirectory: 'debug'
-        }))
-        .pipe(jasmine())
-        .pipe(cover.gather())
-        .pipe(cover.format())
-        .pipe(gulp.dest('reports'));
+// gulp.task('cover', function() {
+//     return gulp.src('./specs/**.js')
+//         .pipe(cover.instrument({
+//             pattern: ['**/test*'],
+//             debugDirectory: 'debug'
+//         }))
+//         .pipe(jasmine())
+//         .pipe(cover.gather())
+//         .pipe(cover.format())
+//         .pipe(gulp.dest('reports'));
+// });
+
+gulp.task('test-cover', function() {
+    return gulp.src('./client/static/assets/js/three/threejsFingerboard.js')
+        // Right there
+        .pipe(istanbul({ includeUntested: true }))
+        .on('finish', function() {
+            gulp.src('./specs/**.js')
+                .pipe(jasmine())
+                .pipe(istanbul.writeReports({
+                    dir: './build/unit-test-coverage',
+                    reporters: ['lcov'],
+                    reportOpts: { dir: './build/unit-test-coverage' }
+                }));
+        });
 });
