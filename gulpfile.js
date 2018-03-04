@@ -89,17 +89,19 @@ gulp.task('default', ['html', 'mini', 'css', 'js']);
 
 
 // TESTS
-gulp.task('test', function() {
-    return gulp.src('client/static/assets/specs/**.js')
+gulp.task('test-single', function() {
+    return gulp.src('./specs/**.js')
         .pipe(jasmine());
 });
 
 gulp.task('test-watch', function() {
-    gulp.watch(['client/static/assets/specs/**.js', 'client/static/assets/js/**.js'], ['test']);
+    gulp.watch(['./specs/**.js', 'client/static/assets/js/**.js'], ['test']);
 });
 
-gulp.task('jasmine', function() {
-    return gulp.src('srcjasmine.js')
+gulp.task('test', ['test-single', 'test-watch']);
+
+gulp.task('cover', function() {
+    return gulp.src('./specs/**.js')
         .pipe(cover.instrument({
             pattern: ['**/test*'],
             debugDirectory: 'debug'
