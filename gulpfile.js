@@ -11,6 +11,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
 
 var jasmine = require('gulp-jasmine');
+var Server = require('karma').Server;
 var cover = require('gulp-coverage');
 var istanbul = require('gulp-istanbul');
 
@@ -101,18 +102,6 @@ gulp.task('test-watch', function() {
 
 gulp.task('test', ['test-single', 'test-watch']);
 
-// gulp.task('cover', function() {
-//     return gulp.src('./specs/**.js')
-//         .pipe(cover.instrument({
-//             pattern: ['**/test*'],
-//             debugDirectory: 'debug'
-//         }))
-//         .pipe(jasmine())
-//         .pipe(cover.gather())
-//         .pipe(cover.format())
-//         .pipe(gulp.dest('reports'));
-// });
-
 gulp.task('test-cover', function() {
     return gulp.src('./client/static/assets/js/three/threejsFingerboard.js')
         // Right there
@@ -126,4 +115,11 @@ gulp.task('test-cover', function() {
                     reportOpts: { dir: './build/unit-test-coverage' }
                 }));
         });
+});
+
+gulp.task('tests', function(done) {
+    new Server({
+        configFile: '../karma.conf.js',
+        singleRun: false
+    }, done).start();
 });
