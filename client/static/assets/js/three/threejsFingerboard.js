@@ -37,7 +37,7 @@ $('#ann').hide();
 $('.showOrNot').on('click', hideShow);
 $('.show2d3d').on('click', show2d3d);
 $('#ann>div').on('click', displayAnnText);
-$('.ann-text').on('click', function() { $(this).hide(); } );
+$('.ann-text').on('click', function() { $(this).hide(); });
 
 function hideShow() {
     var text = $('.showOrNot').text();
@@ -56,10 +56,44 @@ function show2d3d() {
 }
 
 function displayAnnText() {
-    $('.ann-text').toggle();
+    $('.ann-text').show();
+    var text;
     var elClass = this.className;
-    console.log(elClass);
-    console.log(typeof elClass);
+    switch (elClass) {
+        case 'sloper30':
+            text = "sloper30 , it is used for easy traing, hold for 5 seconds";
+            break;
+        case 'sloper20':
+            text = "sloper20 , it is used for easy traing, hold for 5 seconds";
+            break;
+        case 'jugL':
+            text = "large jug , it is used for easy traing, hold for 5 seconds";
+            break;
+        case 'jugC':
+            text = "central jug , it is used for easy traing, hold for 5 seconds";
+            break;
+        case 'fingPock2':
+            text = "finger Pocket 2 , it is used for easy traing, hold for 5 seconds";
+            break;
+        case 'fingPock3':
+            text = "finger Pocket 3 , it is used for easy traing, hold for 5 seconds";
+            break;
+        case 'fingPock4':
+            text = "finger Pocket 4 , it is used for easy traing, hold for 5 seconds";
+            break;
+        case 'fingCrimp4':
+            text = "finger Crimp 2 , it is used for easy traing, hold for 5 seconds";
+            break;
+        case 'fingCrimp3':
+            text = "finger Crimp 3 , it is used for easy traing, hold for 5 seconds";
+            break;
+        case 'fingCrimp2':
+            text = "finger Crimp 4 , it is used for easy traing, hold for 5 seconds";
+            break;
+        default:
+            text = "ingerboard features";
+    }
+    $('.ann-text').text(text);
 }
 
 // UI elements show hide END
