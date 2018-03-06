@@ -75,6 +75,24 @@
             cursor: pointer;
             min-width: 165px;
         }
+        /* Text */
+        
+        div.ann-text {
+            position: absolute;
+            bottom: 12%;
+            z-index: 3;
+            left: 7%;
+            display: inline-block;
+            margin-right: 2px;
+            color: rgba(230, 230, 230, 0.94);
+            border-bottom: 2px solid rgba(230, 230, 230, 0.84);
+            background: rgba(50, 50, 50, 0.8);
+            padding: 0.3em 0.5em;
+            text-align: left;
+            font-size: 0.82em;
+            font-weight: 300;
+            max-width: 40%;
+        }
         /* Loader */
         
         #loader {
@@ -137,7 +155,6 @@
         }
         
         @media (max-width: 767px) {
-
             .showOrNot,
             #ann,
             #loader>.text {

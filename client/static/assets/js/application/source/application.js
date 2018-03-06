@@ -25,6 +25,7 @@ $(document).ready(function() {
     /* Hide Annotations Button */
     $('.showOrNot').hide();
     $('.show2d3d').hide();
+    $('.ann-text').hide();
 
     /* Fix navigation. */
     $('#navigation').fixedonlater({
