@@ -1,47 +1,47 @@
+"use strict";
+if (!Detector.webgl) Detector.addGetWebGLMessage();
+
+var baseURL = '../static/assets';
+
+var camera;
+var controls;
+var scene;
+var renderer;
+
+var meshDistance;
+var fbGroup;
+var linesGroup;
+
+var lines = [];
+var pos = {
+    lineFir: [],
+    lineSec: [],
+    ann: []
+};
+
+var fbYpos = -110;
+
+var selectors = ['.sloper30', '.sloper20', '.jugL', '.jugC',
+    '.fingPock2', '.fingPock3', '.fingPock4',
+    '.fingCrimp4', '.fingCrimp3', '.fingCrimp2'
+];
+
 function fingerboard3D() {
-    "use strict";
-    if (!Detector.webgl) Detector.addGetWebGLMessage();
-
-    const baseURL = '../static/assets';
-
-    let camera;
-    let controls;
-    let scene;
-    let renderer;
-
-    let meshDistance;
-    let fbGroup;
-    let linesGroup;
-
-    let lines = [];
-    let pos = {
-        lineFir: [],
-        lineSec: [],
-        ann: []
-    };
-
-    const fbYpos = -110;
-
-    const selectors = ['.sloper30', '.sloper20', '.jugL', '.jugC',
-        '.fingPock2', '.fingPock3', '.fingPock4',
-        '.fingCrimp4', '.fingCrimp3', '.fingCrimp2'
-    ];
-
     init();
-
+}
     $('#ann').hide();
     $('.showOrNot').on('click', hideShow);
     $('.show2d3d').on('click', show2d3d);
 
     function hideShow() {
-        let text = $('.showOrNot').text();
+        var text = $('.showOrNot').text();
         $('.showOrNot').text(text == 'Show Annotaions' ? 'Hide Annotaions' : 'Show Annotaions');
         $('#ann').toggle();
         linesGroup.visible = linesGroup.visible ? false : true;
     }
 
     function show2d3d() {
-        let text2 = $('.show2d3d').text();
+        var text2 = $('.show2d3d').text();
         $('.show2d3d').text(text2 == 'Show image' ? 'Show 3D' : 'Show image');
         $('#canvasContainer>img').toggle();
         $('.showOrNot').toggle();
@@ -60,7 +60,7 @@ function fingerboard3D() {
 
         //RENDER
         renderer = createRenderer(0x222222, 0.1);
-        const parent = document.getElementById('canvasContainer');
+        var parent = document.getElementById('canvasContainer');
         parent.appendChild(renderer.domElement);
 
         // Empty Group
@@ -85,11 +85,11 @@ function fingerboard3D() {
                 [-188, 25, 40], // 3 Finger Cripm
                 [-270, 25, 40] // 4 Finger Cripm
             ];
-            const difference = [10, 10, 20];
-            for (let i = 0; i < pos.lineFir.length; i++) {
-                const d0 = pos.lineFir[i][0] + difference[0];
-                const d1 = pos.lineFir[i][1] + difference[1];
-                const d2 = pos.lineFir[i][2] + difference[2];
+            var difference = [10, 10, 20];
+            for (var i = 0; i < pos.lineFir.length; i++) {
+                var d0 = pos.lineFir[i][0] + difference[0];
+                var d1 = pos.lineFir[i][1] + difference[1];
+                var d2 = pos.lineFir[i][2] + difference[2];
 
                 pos.lineSec.push([d0, d1, d2]);
                 pos.ann.push([d0, d1 + fbYpos, d2]);
@@ -99,13 +99,13 @@ function fingerboard3D() {
         } else { linesGroup.visible = false }
 
         //MATERIALS
-        const fingerboardMat = createFingerBoardMaterial();
+        var fingerboardMat = createFingerBoardMaterial();
 
         //LIGHTS
         createLights();
 
         //LOAD FINGERBOARD
-        let fingerb = loadObject(baseURL + '/obj/fingerboard2.obj', fingerboardMat, fbGroup);
+        var fingerb = loadObject(baseURL + '/obj/fingerboard2.obj', fingerboardMat, fbGroup);
         // console.log('fingerb is ', fingerb); // fingerb is undefined ?
 
         //Controls
@@ -172,7 +172,7 @@ function fingerboard3D() {
     }
 
     function createfbGroup(x, y, z) {
-        const fbGroup = new THREE.Object3D;
+        var fbGroup = new THREE.Object3D;
         fbGroup.name = 'fingerboard group';
         fbGroup.position.set(x, y, z);
         fbGroup.rotation.set(0, 0, 0);
@@ -184,11 +184,11 @@ function fingerboard3D() {
 
     // Line 
     function createLine(fp, sp) {
-        const material = new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 1.4, linecap: 'round' });
-        let geometry = new THREE.Geometry();
+        var material = new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 1.4, linecap: 'round' });
+        var geometry = new THREE.Geometry();
         geometry.vertices.push(new THREE.Vector3(fp[0], fp[1], fp[2]));
         geometry.vertices.push(new THREE.Vector3(sp[0], sp[1], sp[2]));
-        let line = new THREE.Line(geometry, material);
+        var line = new THREE.Line(geometry, material);
         line.visible = false;
         linesGroup.add(line);
 
@@ -236,7 +236,7 @@ function fingerboard3D() {
                 parent.add(object);
             },
             function(xhr) {
-                let loadPercent = Math.round(xhr.loaded / xhr.total * 100);
+                var loadPercent = Math.round(xhr.loaded / xhr.total * 100);
                 $('.percent').text(loadPercent);
             },
             function(error) {
@@ -262,7 +262,7 @@ function fingerboard3D() {
 
     //FUNCTION FOR CREATING RENDERER
     function createRenderer(clearColour, alpha) {
-        let myRenderer;
+        var myRenderer;
         myRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         myRenderer.shadowMap.enabled = true; //enabling shadow maps in the renderer
         myRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -273,14 +273,14 @@ function fingerboard3D() {
     }
 
     function updateScreenPosition(annPos, meshDist, selects) {
-        let ann;
-        let canvas = renderer.domElement;
+        var ann;
+        var canvas = renderer.domElement;
 
         annPos.map((p, i) => {
             if (lines.length > 0) {
-                const vec = new THREE.Vector3(p[0], p[1], p[2]);
-                const vec2 = new THREE.Vector3(p[0], p[1] - 27, p[2]);
-                let spritesBehindObject;
+                var vec = new THREE.Vector3(p[0], p[1], p[2]);
+                var vec2 = new THREE.Vector3(p[0], p[1] - 27, p[2]);
+                var spritesBehindObject;
 
                 // Annotation position
                 vec.project(camera);
@@ -292,7 +292,7 @@ function fingerboard3D() {
                 ann.style.left = `${vec.x}px`;
 
                 // opacity
-                let spriteDistance = camera.position.distanceTo(vec2);
+                var spriteDistance = camera.position.distanceTo(vec2);
                 spritesBehindObject = spriteDistance > meshDist;
                 ann.style.opacity = spritesBehindObject ? 0.1 : 1;
 
@@ -312,4 +312,3 @@ function fingerboard3D() {
         renderer.render(sc, cam);
         updateScreenPosition(ann, meshDist, selects);
     }
-}
