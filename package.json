@@ -24,18 +24,20 @@
     },
     "dependencies": {
         "express": "~3.4.4",
+        "lodash": "^4.17.5",
         "npm": "^5.7.1"
     },
     "devDependencies": {
         "browser-sync": "^2.23.6",
         "jsdom": "^11.6.2",
         "webpack": "^4.2.0",
+        "webpack-cli": "^2.0.13",
         "webpack-merge": "^4.1.2"
     },
     "bundleDependencies": [],
     "private": true,
-    "main": "server.js",
     "scripts": {
+        "start": "webpack --config webpack.config.js",
         "build": "webpack client/static/assets/js/three/threejsFingerboard.js dist/bundle.js"
     }
 }
