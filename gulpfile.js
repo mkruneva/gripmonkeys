@@ -5,7 +5,6 @@ var less = require('gulp-less');
 var minifyCSS = require('gulp-csso');
 var imagemin = require('gulp-imagemin');
 var uglify = require('gulp-uglify');
-// var pump = require('pump');
 var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
