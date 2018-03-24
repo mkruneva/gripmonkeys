@@ -235,7 +235,9 @@ $(document).ajaxComplete(function() {
     /* Remove loading section. */
     $(".loading").delay(1000).slideUp(500, function() {
         $(this).remove();
-        fingerboard3D($('#canvasContainer'));
+        var fb3D = new FB3D();
+        fb3D.fingerboard3D($('#canvasContainer'));
+        // fingerboard3D($('#canvasContainer'));
     });
 
     /* Portfolio details - close. */
