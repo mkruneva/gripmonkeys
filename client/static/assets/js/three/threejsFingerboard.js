@@ -1,4 +1,6 @@
-"use strict";
+'use strict';
+
+
 if (!Detector.webgl) Detector.addGetWebGLMessage();
 
 var baseURL = '../static/assets';
@@ -26,8 +28,8 @@ var selectors = ['.sloper30', '.sloper20', '.jugL', '.jugC',
     '.fingCrimp4', '.fingCrimp3', '.fingCrimp2'
 ];
 
-function fingerboard3D() {
-    init();
+function fingerboard3D(element) {
+    init(element);
     animate();
 }
 
@@ -98,7 +100,7 @@ function displayAnnText() {
 
 // UI elements show hide END
 
-function init() {
+function init(element) {
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(35, 5 / 3, 1, 2000); //5/3 ratio corresponds to the 0.6 width/height canvas container padding
     scene.add(camera);
@@ -106,8 +108,7 @@ function init() {
 
     //RENDER
     renderer = createRenderer(0x222222, 0.1);
-    var parent = document.getElementById('canvasContainer');
-    parent.appendChild(renderer.domElement);
+    element.append(renderer.domElement);
 
     // Empty Group
     fbGroup = createfbGroup(0, fbYpos, 0);
@@ -329,8 +330,8 @@ function updateScreenPosition(annPos, meshDist, selects) {
 
             // Annotation position
             vec.project(camera);
-            vec.x = Math.round((0.5 + vec.x / 2) * (canvas.clientWidth / window.devicePixelRatio));
-            vec.y = Math.round((0.5 - vec.y / 2) * (canvas.clientHeight / window.devicePixelRatio)); //changed from canvas.height to canvas.clienntHeight
+            vec.x = Math.round((0.5 + vec.x / 2) * (canvas.clientWidth)); // / window.devicePixelRatio removed for mac support
+            vec.y = Math.round((0.5 - vec.y / 2) * (canvas.clientHeight)); //changed from canvas.height to canvas.clienntHeight
 
             ann = document.querySelector(selects[i]);
             ann.style.top = `${vec.y}px`;
